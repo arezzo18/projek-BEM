@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manajemen Proyek & Tugas</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HALAMAN LOGIN & REGISTER -->
+  <div id="authBox" class="auth-box">
+    <h2 id="authTitle">Login</h2>
+
+    <form id="authForm">
+      <div id="namaField" class="sembunyi">
+        <label>Nama</label>
+        <input type="text" id="inputNama" placeholder="Nama kamu" />
+      </div>
+
+      <label>Username</label>
+      <input type="text" id="inputUser" placeholder="Minimal 3 huruf" required />
+
+      <label>Password</label>
+      <input type="password" id="inputPass" placeholder="Minimal 4 karakter" required />
+
+      <button type="submit" id="authBtn">Masuk</button>
+    </form>
+
+    <p class="auth-toggle">
+      <span id="toggleText">Belum punya akun?</span>
+      <button type="button" class="btn-link" onclick="gantiModeAuth()">Daftar</button>
+    </p>
+  </div>
+
+  <!-- HALAMAN DASHBOARD -->
+  <div id="dashboardBox" class="sembunyi">
+    <header class="topbar">
+      <h3>Manajemen Proyek & Tugas</h3>
+      <div class="topbar-kanan">
+        <span id="labelUser"></span>
+        <button type="button" class="btn-kecil" onclick="gantiTema()">Mode Gelap</button>
+        <button type="button" class="btn-kecil btn-merah" onclick="logout()">Logout</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- RINGKASAN -->
+      <div class="ringkasan">
+        <div class="kartu-stat">Total Proyek: <strong id="totalProyek">0</strong></div>
+        <div class="kartu-stat">To-do: <strong id="totalTodo">0</strong></div>
+        <div class="kartu-stat">In-Progress: <strong id="totalProgress">0</strong></div>
+        <div class="kartu-stat">Done: <strong id="totalDone">0</strong></div>
+      </div>
+
+      <!-- DEADLINE DEKAT -->
+      <div class="kotak-info">
+        <strong>Tugas Deadline Dekat (≤ 3 hari):</strong>
+        <ul id="daftarDeadlineDekat">
+          <li>Tidak ada tugas mendekati deadline.</li>
+        </ul>
+      </div>
+
+      <!-- AREA PROYEK & TUGAS -->
+      <div class="grid-utama">
+        <!-- PROYEK -->
+        <section class="kotak">
+          <h3>Proyek</h3>
+          <form id="formProyek">
+            <input type="hidden" id="proyekEditId" />
+            <label>Nama Proyek</label>
+            <input type="text" id="namaProyek" required />
+
+            <label>Deskripsi</label>
+            <input type="text" id="deskripsiProyek" required />
+
+            <label>Deadline</label>
+            <input type="date" id="deadlineProyek" required />
+
+            <label>Status</label>
+            <select id="statusProyek">
+              <option value="Aktif">Aktif</option>
+              <option value="Selesai">Selesai</option>
+            </select>
+
+            <button type="submit" id="btnSimpanProyek">Tambah Proyek</button>
+            <button type="button" id="btnBatalProyek" class="btn-abu sembunyi" onclick="resetFormProyek()">Batal</button>
+          </form>
+
+          <hr class="garis" />
+          <div id="daftarProyek"></div>
+        </section>
+
+        <!-- TUGAS -->
+        <section class="kotak">
+          <h3 id="judulProyekAktif">Pilih proyek dulu</h3>
+          <p id="infoProyekAktif" class="teks-redup"></p>
+
+          <div id="areaTugas" class="sembunyi">
+            <form id="formTugas">
+              <input type="hidden" id="tugasEditId" />
+              <label>Judul Tugas</label>
+              <input type="text" id="judulTugas" required />
+
+              <label>Deskripsi</label>
+              <input type="text" id="deskripsiTugas" required />
+
+              <label>Deadline</label>
+              <input type="date" id="deadlineTugas" required />
+
+              <label>Status</label>
+              <select id="statusTugas">
+                <option value="To-do">To-do</option>
+                <option value="In-Progress">In-Progress</option>
+                <option value="Done">Done</option>
+              </select>
+
+              <label>Lampiran (opsional, maks 1MB)</label>
+              <input type="file" id="fileTugas" />
+
+              <button type="submit" id="btnSimpanTugas">Tambah Tugas</button>
+              <button type="button" id="btnBatalTugas" class="btn-abu sembunyi" onclick="resetFormTugas()">Batal</button>
+            </form>
+
+            <hr class="garis" />
+
+            <!-- FILTER & CARI -->
+            <div class="bar-filter">
+              <input type="text" id="cariTugas" placeholder="Cari tugas..." oninput="tampilkanTugas()" />
+              <select id="filterStatus" onchange="tampilkanTugas()">
+                <option value="Semua">Semua Status</option>
+                <option value="To-do">To-do</option>
+                <option value="In-Progress">In-Progress</option>
+                <option value="Done">Done</option>
+              </select>
+            </div>
+
+            <div id="daftarTugas"></div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="next.js"></script>
+</body>
+</html>
