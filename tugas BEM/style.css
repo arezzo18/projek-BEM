@@ -1,0 +1,205 @@
+/* Warna dasar (bisa berubah saat mode gelap) */
+:root {
+  --bg: #f5f5f5;
+  --kotak: #ffffff;
+  --teks: #222222;
+  --redup: #666666;
+  --border: #cccccc;
+  --utama: #2563eb;
+  --merah: #dc2626;
+}
+
+[data-theme="dark"] {
+  --bg: #18181b;
+  --kotak: #27272a;
+  --teks: #f4f4f5;
+  --redup: #a1a1aa;
+  --border: #3f3f46;
+  --utama: #3b82f6;
+  --merah: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--teks);
+}
+
+.sembunyi {
+  display: none;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 0 15px;
+}
+
+/* Login & Register */
+.auth-box {
+  max-width: 360px;
+  margin: 60px auto;
+  background: var(--kotak);
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.auth-toggle {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 12px;
+}
+
+/* Header */
+.topbar {
+  background: var(--kotak);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.topbar h3 {
+  margin: 0;
+}
+
+.topbar-kanan {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Form & Tombol */
+label {
+  display: block;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+input, select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--bg);
+  color: var(--teks);
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 5px;
+  background: var(--utama);
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.btn-kecil {
+  margin-top: 0;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+
+.btn-merah {
+  background: var(--merah);
+}
+
+.btn-abu {
+  background: #6b7280;
+}
+
+.btn-link {
+  background: none;
+  color: var(--utama);
+  padding: 0;
+  margin: 0;
+  text-decoration: underline;
+}
+
+/* Ringkasan & Info */
+.ringkasan {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.kartu-stat {
+  background: var(--kotak);
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.kotak-info {
+  background: var(--kotak);
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+/* Layout Proyek & Tugas */
+.grid-utama {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 15px;
+}
+
+@media (max-width: 768px) {
+  .grid-utama {
+    grid-template-columns: 1fr;
+  }
+}
+
+.kotak {
+  background: var(--kotak);
+  padding: 15px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.item-card {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: var(--bg);
+}
+
+.item-aktif {
+  border-color: var(--utama);
+  border-width: 2px;
+}
+
+.bar-filter {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.teks-redup {
+  color: var(--redup);
+  font-size: 14px;
+}
+
+.garis {
+  margin: 15px 0;
+  border: none;
+  border-top: 1px solid var(--border);
+}
